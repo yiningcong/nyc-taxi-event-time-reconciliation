@@ -1,0 +1,61 @@
+{
+    "experiment_date": "2024-01-23",
+    "aggregation": {
+        "engine": "DuckDB",
+        "duckdb_version": "2.0.0",
+        "input_file": "yellow_taxi_2024_01_23.parquet",
+        "input_sha256": "2f654f74c0b7cad40e93cfdcf9162aad6da5071f781ff64088e661f5ae4e593c",
+        "group_by": [
+            "pickup_location_id",
+            "window_start_utc"
+        ],
+        "timestamp_column": "event_time_utc",
+        "window_type": "tumbling",
+        "window_size": "15 minutes",
+        "window_origin_utc": "2000-01-03 00:00:00+00",
+        "aggregation_function": "COUNT(*)",
+        "empty_zone_window_pairs": "not emitted"
+    },
+    "preparation_manifest_sha256": "7f6c52c4b66d7b3989f8e567eacfa3d2c930390c34a96dc7bc158d9019269202",
+    "input_summary": {
+        "total_records": 99891,
+        "distinct_zones": 228,
+        "unique_event_ids": 99891,
+        "validation_checks": {
+            "record_count_matches_manifest": true,
+            "no_missing_event_times": true,
+            "no_missing_pickup_zones": true,
+            "all_event_ids_unique": true,
+            "all_records_on_experimental_day": true
+        },
+        "sha256": "2f654f74c0b7cad40e93cfdcf9162aad6da5071f781ff64088e661f5ae4e593c"
+    },
+    "window_validation": {
+        "window_start_mismatches": 0,
+        "window_end_mismatches": 0,
+        "validation_checks": {
+            "window_start_matches_duckdb": true,
+            "window_end_matches_duckdb": true
+        }
+    },
+    "reference_summary": {
+        "reference_pairs": 6373,
+        "total_pickups": 99891,
+        "distinct_zones": 228,
+        "distinct_windows": 96,
+        "earliest_window_utc": "2024-01-23T05:00:00+00:00",
+        "latest_window_utc": "2024-01-24T04:45:00+00:00",
+        "minimum_pickups_per_pair": 1,
+        "maximum_pickups_per_pair": 200,
+        "validation_checks": {
+            "reference_not_empty": true,
+            "total_pickups_match_input": true,
+            "all_reference_counts_positive": true
+        }
+    },
+    "output": {
+        "filename": "reference_aggregates_2024_01_23.parquet",
+        "sha256": "22f08be1aacd965affc4cb3369caa8bce7d4fb77eceff9425fa3b6e8e71b0d40",
+        "format": "Parquet"
+    }
+}

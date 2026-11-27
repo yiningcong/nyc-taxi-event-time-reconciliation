@@ -1,0 +1,56 @@
+
+[tool.poetry]
+name = "nyc-taxi-event-time-reconciliation"
+version = "0.1.0"
+description = "Experimental evaluation of post-allowed-lateness batch reconciliation for event-time taxi-zone aggregation in Apache Flink."
+authors = []
+readme = "README.md"
+package-mode = true
+
+packages = [
+    { include = "replay" },
+    { include = "reference" },
+    { include = "reconciliation" },
+    { include = "experiments" },
+]
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+pandas = ">=2.2,<5.0"
+pyarrow = ">=18"
+duckdb = ">=1.2"
+pytz = ">=2024.1"
+pyyaml = ">=6.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=8.0"
+ruff = ">=0.9"
+
+[tool.poetry.group.kafka.dependencies]
+confluent-kafka = ">=2.6"
+
+[tool.poetry.group.flink.dependencies]
+apache-flink = ">=2.0"
+
+[tool.poetry.group.spark.dependencies]
+pyspark = ">=4.0"
+
+[tool.poetry.scripts]
+prepare-dataset = "replay.prepare_dataset:main"
+build-reference = "reference.build_reference:main"
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"
+
+[build-system]
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"
