@@ -1,0 +1,48 @@
+{
+    "experiment_date": "2024-01-23",
+    "source": {
+        "filename": "yellow_tripdata_2024-01.parquet",
+        "sha256": "c4d59da7bbc8abaeeeb1727947ee93d9891a71acb42854bd80db1571b2030510",
+        "records": 2964624
+    },
+    "preparation": {
+        "pickup_timestamp_column": "tpep_pickup_datetime",
+        "pickup_zone_column": "PULocationID",
+        "local_timezone": "America/New_York",
+        "event_time_timezone": "UTC",
+        "window_size": "15min",
+        "window_type": "tumbling",
+        "start_boundary": "inclusive",
+        "end_boundary": "exclusive",
+        "identifier_method": "source filename and source row number",
+        "deduplication": "none"
+    },
+    "record_counts": {
+        "source_records": 2964624,
+        "missing_timestamps": 0,
+        "before_experimental_day": 2052236,
+        "on_or_after_next_day": 812497,
+        "records_on_experimental_day": 99891,
+        "missing_zones_on_experimental_day": 0,
+        "unknown_zones_on_experimental_day": 0,
+        "valid_records": 99891,
+        "excluded_from_extract": 2864733
+    },
+    "output": {
+        "filename": "yellow_taxi_2024_01_23.parquet",
+        "records": 99891,
+        "sha256": "2f654f74c0b7cad40e93cfdcf9162aad6da5071f781ff64088e661f5ae4e593c",
+        "columns": [
+            "event_id",
+            "source_row_number",
+            "event_time_local",
+            "event_time_utc",
+            "pickup_location_id",
+            "window_start_utc",
+            "window_end_utc"
+        ],
+        "distinct_pickup_zones": 228,
+        "earliest_local_event": "2024-01-23T00:00:00",
+        "latest_local_event": "2024-01-23T23:59:56"
+    }
+}
